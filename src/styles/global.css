@@ -1,0 +1,21 @@
+html,
+body {
+  max-width: 100vw;
+  padding: 0 !important;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background-default-color);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  height: 96px;
+  background-color: #004d61;
+}
