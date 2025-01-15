@@ -1,4 +1,3 @@
-"use client";
 
 import { Box, Divider, Skeleton, Typography, useTheme } from "@mui/material";
 import {
@@ -6,13 +5,13 @@ import {
   IconButton,
   Illustration,
   CurrencyInput,
+  formatCurrency
 } from "fiap-financeiro-ds";
 import { useState } from "react";
 import styles from "./styles";
 import { useRecoilValue } from "recoil";
 import { balanceState } from "@/recoil/atoms/balanceAtom";
 import { IconButtonProps } from "fiap-financeiro-ds/dist/iconButton";
-import { formatCurrency } from "fiap-financeiro-ds/dist/currency-input";
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 

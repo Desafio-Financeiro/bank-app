@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Home from "@/modules/home"
 
+
 export default function HomePage() {
   return (
     <>
@@ -11,6 +12,7 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Home />
+
     </>
   );
 }

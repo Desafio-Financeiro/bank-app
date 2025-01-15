@@ -1,11 +1,10 @@
 import { ptBR } from "date-fns/locale";
-import { Card, Button } from "fiap-financeiro-ds";
+import { Card, Button, formatCurrency } from "fiap-financeiro-ds";
 import { format } from "date-fns";
 import { Box, Stack, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { statementState } from "@/recoil/atoms/statementAtom";
-import { useEffect } from "react";
 import { getStatementRequest } from "@/services/statement";
 import { useCookies } from "react-cookie";
 import { accountState } from "@/recoil/atoms/accountAtom";
@@ -15,7 +14,8 @@ import type { Transaction } from "@/types/transaction";
 import { transactionTypesState } from "@/recoil/atoms/transactionTypesAtom";
 import { transactionsState } from "@/recoil/atoms/transactionsAtom";
 import { balanceState } from "@/recoil/atoms/balanceAtom";
-import { formatCurrency } from "fiap-financeiro-ds/dist/currency-input";
+import { lazy, Suspense, useEffect, useState } from "react";
+const ExtractApp = lazy(() => import("transactionsApp/Extract"));
 
 const operationTypeMapper = {
   Debit: "Débito",
@@ -23,6 +23,35 @@ const operationTypeMapper = {
 };
 
 export function Extract() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  return (
+    isClient && (
+      <Suspense fallback={<div>Carregando...</div>}>
+        <ExtractApp
+          list={[
+            {
+              id: "3",
+              accountId: "A003",
+              type: "Debit",
+              value: 75.25,
+              date: new Date("2025-01-12T09:15:00"),
+            },
+            {
+              id: "4",
+              accountId: "A001",
+              type: "Credit",
+              value: 500.0,
+              date: new Date("2025-01-13T16:00:00"),
+            },
+          ]}
+        />
+      </Suspense>
+    )
+  );
   const { push } = useRouter();
   const [cookies] = useCookies(["userToken"]);
   const account = useRecoilValue(accountState);
@@ -39,7 +68,7 @@ export function Extract() {
         Authorization: `Bearer ${cookies.userToken}`,
       },
     },
-    getStatementRequest,
+    getStatementRequest
   );
 
   useEffect(() => {
@@ -57,7 +86,7 @@ export function Extract() {
       setBalance(
         transactionsList.reduce((acc: number, current: Transaction) => {
           return (acc += current.value);
-        }, 0),
+        }, 0)
       );
     }
   }, [data]);

@@ -1,4 +1,3 @@
-"use client";
 
 import { Box } from "@mui/material";
 import { Card, Illustration, Toast } from "fiap-financeiro-ds";

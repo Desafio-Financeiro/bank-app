@@ -1,4 +1,3 @@
-"use client";
 
 import { Card } from "fiap-financeiro-ds";
 import { TableData } from "./components/table-data";

@@ -1,4 +1,3 @@
-"use client";
 
 import {
   Table,
@@ -9,14 +8,13 @@ import {
   useTheme,
 } from "@mui/material";
 
-import { Icons, Button, IconButton } from "fiap-financeiro-ds";
+import { Icons, Button, IconButton, formatCurrency } from "fiap-financeiro-ds";
 
 import { EditModal } from "../edit-modal";
 import { useState } from "react";
 import { formatDate } from "@/modules/utils/formats";
 import { DeleteModal } from "../delete-modal";
 import type { Transaction } from "@/types/transaction";
-import { formatCurrency } from "fiap-financeiro-ds/dist/currency-input";
 
 interface TableDataProps {
   data: Transaction[];
