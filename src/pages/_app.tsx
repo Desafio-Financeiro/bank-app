@@ -9,6 +9,7 @@ import { Menu } from "@/modules/home/components";
 import styles from "./styles";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const getLayout = (Component as any).getLayout ?? ((page: any) => page);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -27,9 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <Card type="default" sx={styles.menu}>
                 <Menu />
               </Card>
-              <Box flex={1}>
-                <Component {...pageProps} />
-              </Box>
+              <Box flex={1}>{getLayout(<Component {...pageProps} />)}</Box>
             </Box>
           </Box>
         </RecoilRoot>
