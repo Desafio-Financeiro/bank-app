@@ -9,6 +9,7 @@ const nextConfig = {
         remotes: {
           transactionsApp:
             "transactionsApp@http://localhost:3002/remoteEntry.js",
+          reportsApp: "reportsApp@http://localhost:3001/remoteEntry.js",
         },
         filename: "static/chunks/remoteEntry.js",
         extraOptions: {},

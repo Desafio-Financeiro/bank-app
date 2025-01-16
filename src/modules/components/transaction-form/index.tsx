@@ -1,4 +1,9 @@
-import { RadioGroup, Select, CurrencyInput, Button, formatCurrency } from "fiap-financeiro-ds";
+import {
+  Select,
+  CurrencyInput,
+  Button,
+  formatCurrency,
+} from "fiap-financeiro-ds";
 import { Box, useTheme } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { transactionTypesState } from "@/recoil/atoms/transactionTypesAtom";

@@ -11,10 +11,9 @@ import { accountState } from "@/recoil/atoms/accountAtom";
 import useSWRMutation from "swr/mutation";
 import { groupTransactionsByMonth } from "@/modules/utils/groupTransactionsByMonth";
 import type { Transaction } from "@/types/transaction";
-import { transactionTypesState } from "@/recoil/atoms/transactionTypesAtom";
 import { transactionsState } from "@/recoil/atoms/transactionsAtom";
 import { balanceState } from "@/recoil/atoms/balanceAtom";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const operationTypeMapper = {
   Debit: "Débito",
@@ -26,7 +25,6 @@ export function Extract() {
   const [cookies] = useCookies(["userToken"]);
   const account = useRecoilValue(accountState);
   const statement = useRecoilValue(statementState);
-  const transactionTypes = useRecoilValue(transactionTypesState);
   const setStatement = useSetRecoilState(statementState);
   const setTransactions = useSetRecoilState(transactionsState);
   const setBalance = useSetRecoilState(balanceState);

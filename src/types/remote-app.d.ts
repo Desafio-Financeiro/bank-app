@@ -19,3 +19,8 @@ declare module "transactionsApp/Extract" {
   const Extract: React.FC<ExtractProps>;
   export default Extract;
 }
+
+declare module "reportsApp/reportsApp" {
+  const mount;
+  export { mount };
+}
