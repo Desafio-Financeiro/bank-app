@@ -18,7 +18,11 @@ const styles: Record<string, SxProps<Theme>> = {
     position: "absolute",
     zIndex: 1,
     left: 0,
-    bottom: 18,
+    bottom: 0,
+
+    "& svg": {
+      height: "150px",
+    },
   },
   today: {
     display: "flex",
@@ -62,7 +66,7 @@ const styles: Record<string, SxProps<Theme>> = {
     width: "140px",
   },
   card: {
-    height: "420px",
+    height: "270px",
     position: "relative",
     [`@media (max-width: ${theme.breakpoints.values.sm}px)`]: {
       height: "570px",

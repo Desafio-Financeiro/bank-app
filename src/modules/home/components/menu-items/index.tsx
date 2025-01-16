@@ -35,8 +35,8 @@ export default function MenuItems() {
           ...styles.menuItem,
           border: "none",
         }}
-        handleClick={() => router.push("/services")}
-        active={pathname === "/services"}
+        handleClick={() => router.push("/other-services")}
+        active={pathname === "/other-services"}
         disabled
       >
         Outros serviços

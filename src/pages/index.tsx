@@ -1,8 +1,9 @@
 import Head from "next/head";
-import Home from "@/modules/home"
+import Home from "@/modules/home";
+import { NextPageWithLayout } from "@/types/next";
+import { BasicLayout } from "@/layouts/basic";
 
-
-export default function HomePage() {
+const Index: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -12,7 +13,12 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Home />
-
     </>
   );
-}
+};
+
+export default Index;
+
+Index.getLayout = function getLayout(page: React.ReactElement) {
+  return <BasicLayout>{page}</BasicLayout>;
+};
