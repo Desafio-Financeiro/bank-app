@@ -1,11 +1,9 @@
-
-import { Box, Divider, Skeleton, Typography, useTheme } from "@mui/material";
+import { Box, Divider, Typography, useTheme } from "@mui/material";
 import {
   Card,
   IconButton,
   Illustration,
-  CurrencyInput,
-  formatCurrency
+  formatCurrency,
 } from "fiap-financeiro-ds";
 import { useState } from "react";
 import styles from "./styles";
