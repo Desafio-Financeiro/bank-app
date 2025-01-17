@@ -15,9 +15,9 @@ export const createTransactionRequest = async (
         to?: string;
         anexo?: string;
       };
-      headers: any;
+      headers: object;
     };
-  },
+  }
 ) => {
   const response = await http({
     method: "post",

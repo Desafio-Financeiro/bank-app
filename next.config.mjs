@@ -7,9 +7,8 @@ const nextConfig = {
       new NextFederationPlugin({
         name: "bankAppHost",
         remotes: {
-          transactionsApp:
-            "transactionsApp@http://localhost:3002/remoteEntry.js",
-          reportsApp: "reportsApp@http://localhost:3001/remoteEntry.js",
+          transactionsApp: `transactionsApp@${process.env.NEXT_PUBLIC_TRANSACTIONS_APP_URL}`,
+          reportsApp: `reportsApp@${process.env.NEXT_PUBLIC_REPORTS_APP_URL}`,
         },
         filename: "static/chunks/remoteEntry.js",
         extraOptions: {},

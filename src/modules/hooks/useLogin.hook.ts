@@ -6,16 +6,16 @@ import { useSetRecoilState } from "recoil";
 import useSWRMutation from "swr/mutation";
 
 export const useLogin = () => {
-  const [_, setCookie] = useCookies(["userToken"]);
+  const [, setCookie] = useCookies(["userToken"]);
   const setUser = useSetRecoilState(userState);
 
   const { trigger: createUserMutation } = useSWRMutation(
     "/user",
-    createUserRequest,
+    createUserRequest
   );
   const { trigger: loginUserMutation } = useSWRMutation(
     "/user/auth",
-    loginUserRequest,
+    loginUserRequest
   );
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const useLogin = () => {
       email: "user@teste.com",
       password: "teste1234",
     }).then((responseUserCreated) => {
-      if(responseUserCreated?.data) setUser(responseUserCreated.data.result);
+      if (responseUserCreated?.data) setUser(responseUserCreated.data.result);
 
       loginUserMutation({
         email: "user@teste.com",

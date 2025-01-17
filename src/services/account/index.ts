@@ -5,7 +5,7 @@ export const getAccountRequest = async ({
   headers,
 }: {
   url: string;
-  headers: any;
+  headers: object;
 }) => {
   const response = await http({
     method: "get",
