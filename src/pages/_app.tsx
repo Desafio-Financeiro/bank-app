@@ -1,4 +1,4 @@
-import { ThemeProvider, CssBaseline, GlobalStyles, Box } from "@mui/material";
+import { ThemeProvider, CssBaseline, Box } from "@mui/material";
 import { Card, theme } from "fiap-financeiro-ds";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
