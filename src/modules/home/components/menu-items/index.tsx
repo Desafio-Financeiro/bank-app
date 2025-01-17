@@ -24,11 +24,10 @@ export default function MenuItems() {
       </Menu.MenuItem>
       <Menu.MenuItem
         sx={styles.menuItem}
-        handleClick={() => router.push("/investments")}
-        active={pathname === "/investments"}
-        disabled
+        handleClick={() => router.push("/reports")}
+        active={pathname === "/reports"}
       >
-        Investimentos
+        Relatórios
       </Menu.MenuItem>
       <Menu.MenuItem
         sx={{
