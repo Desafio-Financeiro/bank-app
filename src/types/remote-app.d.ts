@@ -1,3 +1,12 @@
+declare namespace JSX {
+  interface IntrinsicElements {
+    "app-root": React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLElement>,
+      HTMLElement
+    >;
+  }
+}
+
 declare module "transactionsApp/Transactions" {
   import React from "react";
 
@@ -14,5 +23,6 @@ declare module "transactionsApp/Extract" {
 
 declare module "reportsApp/reportsApp" {
   const mount;
-  export { mount };
+  const unmount;
+  export { mount, unmount };
 }
