@@ -1,4 +1,3 @@
-
 import { Box } from "@mui/material";
 import { Card, Illustration, Toast } from "fiap-financeiro-ds";
 
@@ -9,6 +8,7 @@ import { useAddTransaction } from "@/modules/hooks/useAddTransaction.hook";
 import { TransactionTypes } from "@/types/transaction";
 import { useRecoilValue } from "recoil";
 import { accountState } from "@/recoil/atoms/accountAtom";
+import { CustomEventsEnum } from "@/types/custom-events";
 
 export default function NewTransactionCard() {
   const [value, setValue] = useState<string>("0");
@@ -19,16 +19,20 @@ export default function NewTransactionCard() {
   const { createTransaction, isLoading, toastProps, setToastProps } =
     useAddTransaction();
 
-  const handleCreateTransaction = () => {
-    createTransaction({ accountId: account.id, transactionType, value });
-  };
-
   useEffect(() => {
     if (toastProps.type === "success") {
       setValue("0");
       setTransactionType(undefined);
     }
   }, [toastProps]);
+
+  const handleCreateTransaction = () => {
+    createTransaction({ accountId: account.id, transactionType, value });
+    const transactionCreated = new CustomEvent(
+      CustomEventsEnum.TRANSACTION_CREATED
+    );
+    document.dispatchEvent(transactionCreated);
+  };
 
   return (
     <>
