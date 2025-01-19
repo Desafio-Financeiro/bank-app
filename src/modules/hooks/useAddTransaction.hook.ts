@@ -2,9 +2,7 @@ import { ToastProps } from "fiap-financeiro-ds/dist/toast";
 import { createTransactionRequest } from "@/services/transaction";
 import type { TransactionTypes } from "@/types/transaction";
 import { useState } from "react";
-import { useCookies } from "react-cookie";
 import useSWRMutation from "swr/mutation";
-import { useAccount } from "./useAccount.hook";
 
 interface CreateTransactionPayload {
   accountId: string;
@@ -13,9 +11,6 @@ interface CreateTransactionPayload {
 }
 
 export const useAddTransaction = () => {
-  const [cookies] = useCookies(["userToken"]);
-  const { getAccount } = useAccount();
-
   const {
     trigger: createTransactionMutation,
     isMutating: createTransactionIsMutating,
@@ -26,7 +21,7 @@ export const useAddTransaction = () => {
       type: "info",
       content: "",
       isOpen: false,
-    },
+    }
   );
 
   const createTransaction = async ({
@@ -42,11 +37,11 @@ export const useAddTransaction = () => {
           type: transactionType,
         },
         headers: {
-          Authorization: `Bearer ${cookies.userToken}`,
+          // Authorization: `Bearer ${cookies.userToken}`,
         },
       });
 
-      getAccount();
+      // getAccount();
 
       setToastProps({
         type: "success",
