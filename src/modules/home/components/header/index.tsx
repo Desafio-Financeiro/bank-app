@@ -18,7 +18,7 @@ export default function Header() {
   }, []);
 
   return (
-    <UIHeader isLogged userName={user.username || ""}>
+    <UIHeader isLogged userName={user.name || ""}>
       <Menu variant="compact" iconColor="secondary">
         <MenuItems />
       </Menu>
