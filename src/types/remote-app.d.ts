@@ -10,7 +10,7 @@ declare namespace JSX {
 declare module "transactionsApp/Transactions" {
   import React from "react";
 
-  const Transactions: React.FC<{ balance: string }>;
+  const Transactions: React.FC;
   export default Transactions;
 }
 
