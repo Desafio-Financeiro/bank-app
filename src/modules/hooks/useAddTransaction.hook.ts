@@ -29,7 +29,7 @@ export const useAddTransaction = () => {
 
   const createTransaction = async ({
     userId,
-    transactionType = "deposito",
+    transactionType,
     value,
   }: CreateTransactionPayload) => {
     if (Number(balance) - Number(value) < 0 && transactionType === "saque") {
@@ -40,6 +40,13 @@ export const useAddTransaction = () => {
       });
       return;
     }
+
+    if (!transactionType || !Number(value))
+      return setToastProps({
+        type: "error",
+        content: "Ops, ocorreu um erro!",
+        isOpen: true,
+      });
 
     try {
       await createTransactionMutation({
