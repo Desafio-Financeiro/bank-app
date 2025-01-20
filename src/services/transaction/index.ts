@@ -8,14 +8,11 @@ export const createTransactionRequest = async (
   }: {
     arg: {
       data: {
-        accountId: string;
+        userId: string;
         type: TransactionTypes;
         value: number;
-        from?: string;
-        to?: string;
-        anexo?: string;
+        createdAt: string;
       };
-      headers: object;
     };
   }
 ) => {
@@ -23,7 +20,6 @@ export const createTransactionRequest = async (
     method: "post",
     url,
     data: arg.data,
-    headers: arg.headers,
   });
 
   return response;
