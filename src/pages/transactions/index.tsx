@@ -1,10 +1,12 @@
 import { BasicLayout } from "@/layouts/basic";
+import { useBalance } from "@/modules/hooks/useBalance";
 import { lazy, Suspense, useEffect, useState } from "react";
 
 const Transactions = lazy(() => import("transactionsApp/Transactions"));
 
 const TransactionsPage = () => {
   const [isClient, setIsClient] = useState(false);
+  const { balance } = useBalance();
 
   useEffect(() => {
     setIsClient(true);
@@ -14,7 +16,7 @@ const TransactionsPage = () => {
     <>
       {isClient && (
         <Suspense fallback={<div>Carregando...</div>}>
-          <Transactions />
+          <Transactions balance={balance} />
         </Suspense>
       )}
     </>
