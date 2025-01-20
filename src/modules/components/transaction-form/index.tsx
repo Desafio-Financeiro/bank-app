@@ -75,6 +75,7 @@ export function TransactionForm({
           onClick={onSubmit}
           color="tertiary"
           isLoading={isMutating}
+          disabled={isMutating || !Number(value) || !transactionType}
         />
       </Box>
     </Box>
