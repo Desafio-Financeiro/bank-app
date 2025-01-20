@@ -10,6 +10,8 @@ import styles from "./styles";
 import { useRecoilValue } from "recoil";
 import { balanceState } from "@/recoil/atoms/balanceAtom";
 import { IconButtonProps } from "fiap-financeiro-ds/dist/iconButton";
+import { userState } from "@/recoil/atoms/userAtom";
+import { User } from "@/types/user";
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -19,6 +21,7 @@ export default function WelcomeCard() {
   const [balanceIcon, setBalanceIcon] =
     useState<IconButtonProps["icon"]>("mdiEye");
   const balance = useRecoilValue(balanceState);
+  const user = useRecoilValue<User>(userState);
 
   const today = new Date().toLocaleDateString("pt-BR", {
     weekday: "long",
@@ -35,7 +38,7 @@ export default function WelcomeCard() {
   };
 
   return (
-    <Card type="primary" sx={styles.card} title="Olá, Joana! :)">
+    <Card type="primary" sx={styles.card} title={`Olá, ${user.name}! :)`}>
       <Box sx={styles.pixelsTop}>
         <Illustration name="pixelsTopLight" />
       </Box>

@@ -5,8 +5,8 @@ export const transactionTypesState = atom({
   default: {
     values: ["Débito", "Crédito"],
     options: [
-      { value: "Debit", label: "Débito" },
-      { value: "Credit", label: "Crédito" },
+      { value: "deposito", label: "Depósito" },
+      { value: "saque", label: "Transferência" },
     ],
   },
 });

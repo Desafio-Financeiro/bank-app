@@ -2,51 +2,48 @@ import { ToastProps } from "fiap-financeiro-ds/dist/toast";
 import { createTransactionRequest } from "@/services/transaction";
 import type { TransactionTypes } from "@/types/transaction";
 import { useState } from "react";
-import { useCookies } from "react-cookie";
 import useSWRMutation from "swr/mutation";
-import { useAccount } from "./useAccount.hook";
+import { CustomEventsEnum } from "@/types/custom-events";
 
 interface CreateTransactionPayload {
-  accountId: string;
   transactionType?: TransactionTypes;
   value: string | number;
+  userId: string;
 }
 
 export const useAddTransaction = () => {
-  const [cookies] = useCookies(["userToken"]);
-  const { getAccount } = useAccount();
-
   const {
     trigger: createTransactionMutation,
     isMutating: createTransactionIsMutating,
-  } = useSWRMutation("/account/transaction", createTransactionRequest);
+  } = useSWRMutation("/transactions", createTransactionRequest);
 
   const [toastProps, setToastProps] = useState<Omit<ToastProps, "handleClose">>(
     {
       type: "info",
       content: "",
       isOpen: false,
-    },
+    }
   );
 
   const createTransaction = async ({
-    accountId,
-    transactionType = "Credit",
+    userId,
+    transactionType = "deposito",
     value,
   }: CreateTransactionPayload) => {
     try {
       await createTransactionMutation({
         data: {
-          accountId,
+          userId,
           value: Number(value),
           type: transactionType,
-        },
-        headers: {
-          Authorization: `Bearer ${cookies.userToken}`,
+          createdAt: new Date().toISOString(),
         },
       });
 
-      getAccount();
+      const transactionCreated = new CustomEvent(
+        CustomEventsEnum.TRANSACTION_CREATED
+      );
+      document.dispatchEvent(transactionCreated);
 
       setToastProps({
         type: "success",

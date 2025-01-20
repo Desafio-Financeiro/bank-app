@@ -7,14 +7,13 @@ import { TransactionForm } from "@/modules/components/transaction-form";
 import { useAddTransaction } from "@/modules/hooks/useAddTransaction.hook";
 import { TransactionTypes } from "@/types/transaction";
 import { useRecoilValue } from "recoil";
-import { accountState } from "@/recoil/atoms/accountAtom";
-import { CustomEventsEnum } from "@/types/custom-events";
+import { User } from "@/types/user";
+import { userState } from "@/recoil/atoms/userAtom";
 
 export default function NewTransactionCard() {
   const [value, setValue] = useState<string>("0");
   const [transactionType, setTransactionType] = useState<TransactionTypes>();
-
-  const account = useRecoilValue(accountState);
+  const user = useRecoilValue<User>(userState);
 
   const { createTransaction, isLoading, toastProps, setToastProps } =
     useAddTransaction();
@@ -27,11 +26,11 @@ export default function NewTransactionCard() {
   }, [toastProps]);
 
   const handleCreateTransaction = () => {
-    createTransaction({ accountId: account.id, transactionType, value });
-    const transactionCreated = new CustomEvent(
-      CustomEventsEnum.TRANSACTION_CREATED
-    );
-    document.dispatchEvent(transactionCreated);
+    createTransaction({
+      userId: user.id,
+      transactionType,
+      value,
+    });
   };
 
   return (
