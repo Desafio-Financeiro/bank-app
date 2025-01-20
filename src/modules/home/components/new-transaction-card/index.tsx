@@ -6,14 +6,12 @@ import styles from "./styles";
 import { TransactionForm } from "@/modules/components/transaction-form";
 import { useAddTransaction } from "@/modules/hooks/useAddTransaction.hook";
 import { TransactionTypes } from "@/types/transaction";
-import { useRecoilValue } from "recoil";
-import { User } from "@/types/user";
-import { userState } from "@/recoil/atoms/userAtom";
+import { useUser } from "@/modules/hooks/useUser";
 
 export default function NewTransactionCard() {
   const [value, setValue] = useState<string>("0");
   const [transactionType, setTransactionType] = useState<TransactionTypes>();
-  const user = useRecoilValue<User>(userState);
+  const { user } = useUser();
 
   const { createTransaction, isLoading, toastProps, setToastProps } =
     useAddTransaction();

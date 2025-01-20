@@ -17,11 +17,11 @@
     {
       "id": "1",
       "userId": "1",
-      "currentAccount": -328908,
+      "currentAccount": 5000,
       "investmentsAccount": [
         {
-          "fixedIncome": 30000,
-          "variableIncome": 26000
+          "fixedIncome": 25000,
+          "variableIncome": 15000
         }
       ]
     },
@@ -65,6 +65,62 @@
       "value": 12000,
       "type": "saque",
       "createdAt": "2025-01-20T14:28:15.498Z"
+    },
+    {
+      "id": "0eaa",
+      "userId": "1",
+      "value": 400000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T14:43:37.150Z"
+    },
+    {
+      "id": "c47b",
+      "userId": "1",
+      "value": 555000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T14:43:52.259Z"
+    },
+    {
+      "id": "0683",
+      "userId": "1",
+      "value": 22000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T15:08:58.930Z"
+    },
+    {
+      "id": "b0b7",
+      "userId": "1",
+      "value": 500000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T15:22:43.732Z"
+    },
+    {
+      "id": "efa6",
+      "userId": "1",
+      "value": 600000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T15:22:55.549Z"
+    },
+    {
+      "id": "498c",
+      "userId": "2",
+      "value": 500000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T15:30:24.376Z"
+    },
+    {
+      "id": "d9cb",
+      "userId": "2",
+      "value": 600000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T15:31:14.252Z"
+    },
+    {
+      "id": "4f69",
+      "userId": "2",
+      "value": 222000,
+      "type": "deposito",
+      "createdAt": "2025-01-20T15:31:49.549Z"
     }
   ]
 }

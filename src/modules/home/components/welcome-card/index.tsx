@@ -7,11 +7,10 @@ import {
 } from "fiap-financeiro-ds";
 import { useState } from "react";
 import styles from "./styles";
-import { useRecoilValue } from "recoil";
-import { balanceState } from "@/recoil/atoms/balanceAtom";
 import { IconButtonProps } from "fiap-financeiro-ds/dist/iconButton";
-import { userState } from "@/recoil/atoms/userAtom";
-import { User } from "@/types/user";
+
+import { useBalance } from "@/modules/hooks/useBalance";
+import { useUser } from "@/modules/hooks/useUser";
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -20,8 +19,8 @@ export default function WelcomeCard() {
   const [isBalanceVisible, setIsBalanceVisible] = useState<boolean>(true);
   const [balanceIcon, setBalanceIcon] =
     useState<IconButtonProps["icon"]>("mdiEye");
-  const balance = useRecoilValue(balanceState);
-  const user = useRecoilValue<User>(userState);
+  const { balance } = useBalance();
+  const { user } = useUser();
 
   const today = new Date().toLocaleDateString("pt-BR", {
     weekday: "long",

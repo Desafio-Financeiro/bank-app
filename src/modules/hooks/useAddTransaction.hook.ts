@@ -4,6 +4,7 @@ import type { TransactionTypes } from "@/types/transaction";
 import { useState } from "react";
 import useSWRMutation from "swr/mutation";
 import { CustomEventsEnum } from "@/types/custom-events";
+import { useBalance } from "./useBalance";
 
 interface CreateTransactionPayload {
   transactionType?: TransactionTypes;
@@ -12,6 +13,7 @@ interface CreateTransactionPayload {
 }
 
 export const useAddTransaction = () => {
+  const { balance, refetchBalance } = useBalance();
   const {
     trigger: createTransactionMutation,
     isMutating: createTransactionIsMutating,
@@ -30,6 +32,15 @@ export const useAddTransaction = () => {
     transactionType = "deposito",
     value,
   }: CreateTransactionPayload) => {
+    if (Number(balance) - Number(value) < 0 && transactionType === "saque") {
+      setToastProps({
+        type: "error",
+        content: "Saldo insuficiente",
+        isOpen: true,
+      });
+      return;
+    }
+
     try {
       await createTransactionMutation({
         data: {
@@ -44,6 +55,8 @@ export const useAddTransaction = () => {
         CustomEventsEnum.TRANSACTION_CREATED
       );
       document.dispatchEvent(transactionCreated);
+
+      refetchBalance();
 
       setToastProps({
         type: "success",
