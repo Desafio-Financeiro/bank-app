@@ -3,8 +3,30 @@ services:
     build: .
     ports:
       - "3000:3000"
+      - "8080:8080"
     volumes:
       - .:/app
       - /app/node_modules
-    environment:
-      - NODE_ENV=production
+    depends_on:
+      - transactions-app
+      - reports-app
+    networks:
+      - microfrontends-network
+
+  reports-app:
+    build: https://github.com/Desafio-Financeiro/reports.git
+    ports:
+      - "3001:80"
+    networks:
+      - microfrontends-network
+
+  transactions-app:
+    build: https://github.com/Desafio-Financeiro/transactions.git
+    ports:
+      - "3002:3002"
+    networks:
+      - microfrontends-network
+
+networks:
+  microfrontends-network:
+    driver: bridge
