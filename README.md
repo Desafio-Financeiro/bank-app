@@ -111,6 +111,8 @@ Para estabeler comunicação entre eles dentro do container criamos uma network,
 
 [API json-server](http://json-server-api-mu.vercel.app/)
 
+[NPM do DS](https://www.npmjs.com/package/fiap-financeiro-ds)
+
 ## Links para acessar os repositórios dos microfrontends
 
 [Bank APP](https://github.com/Desafio-Financeiro/bank-app)
