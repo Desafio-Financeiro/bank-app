@@ -40,6 +40,7 @@ Para o deploy optamos por utilizar o Amplify, e para executar o projeto configur
 - [x] Incluir gráficos de análise financeira
 - [x] Filtros e pesquisa na listagem de transações
 - [x] Paginação na listagem de transações
+- [x] Filtros na listagem de transações
 - [x] Validações nos formulários
 - [x] Containerização da aplicação e seus componentes com Docker Compose
 - [x] Deploy na cloud com Amplify
