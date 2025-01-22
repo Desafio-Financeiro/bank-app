@@ -38,7 +38,7 @@ Para o deploy optamos por utilizar o Amplify, e para executar o projeto configur
 ## Requisitos da entrega
 
 - [x] Incluir gráficos de análise financeira
-- [x] Filtros e pesquisa na listagem de transações
+- [x] Anexo de documentos
 - [x] Paginação na listagem de transações
 - [x] Filtros na listagem de transações
 - [x] Validações nos formulários
@@ -58,7 +58,7 @@ Para o deploy optamos por utilizar o Amplify, e para executar o projeto configur
 Crie um arquivo `.env` na raiz do projeto com o conteúdo:
 
 ```
-NEXT_PUBLIC_API_URL=http://json-server-api-mu.vercel.app
+NEXT_PUBLIC_API_URL=https://json-server-api-mu.vercel.app
 NEXT_PUBLIC_TRANSACTIONS_APP_URL=http://localhost:3002
 NEXT_PUBLIC_REPORTS_APP_URL=http://localhost:3001
 ```
@@ -79,7 +79,7 @@ A aplicação deve executar na url `http://localhost:3000`.
 Crie um arquivo `.env` na raiz do projeto com o conteúdo:
 
 ```
-NEXT_PUBLIC_API_URL=http://json-server-api-mu.vercel.app
+NEXT_PUBLIC_API_URL=https://json-server-api-mu.vercel.app
 NEXT_PUBLIC_TRANSACTIONS_APP_URL=http://localhost:3002
 NEXT_PUBLIC_REPORTS_APP_URL=http://localhost:3001
 ```
@@ -110,7 +110,7 @@ Para estabeler comunicação entre eles dentro do container criamos uma network,
 
 [Landing page](https://main.d8ml3barfxfwu.amplifyapp.com/)
 
-[API json-server](http://json-server-api-mu.vercel.app/)
+[API json-server](https://json-server-api-mu.vercel.app/)
 
 [NPM do DS](https://www.npmjs.com/package/fiap-financeiro-ds)
 

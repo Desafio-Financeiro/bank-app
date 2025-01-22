@@ -10,6 +10,7 @@ interface CreateTransactionPayload {
   transactionType?: TransactionTypes;
   value: string | number;
   userId: string;
+  file?: File | null;
 }
 
 export const useAddTransaction = () => {
@@ -31,6 +32,7 @@ export const useAddTransaction = () => {
     userId,
     transactionType,
     value,
+    file,
   }: CreateTransactionPayload) => {
     if (Number(balance) - Number(value) < 0 && transactionType === "saque") {
       setToastProps({
@@ -55,6 +57,7 @@ export const useAddTransaction = () => {
           value: Number(value),
           type: transactionType,
           createdAt: new Date().toISOString(),
+          file,
         },
       });
 

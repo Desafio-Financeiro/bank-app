@@ -4,10 +4,12 @@ import {
   Button,
   formatCurrency,
 } from "fiap-financeiro-ds";
-import { Box, useTheme } from "@mui/material";
+import { Box, FormLabel, useTheme } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { transactionTypesState } from "@/recoil/atoms/transactionTypesAtom";
 import type { TransactionTypes } from "@/types/transaction";
+import { InputFile } from "../input-file";
+import { Dispatch, SetStateAction } from "react";
 
 interface TransactionFormProps {
   transactionType?: string;
@@ -16,6 +18,8 @@ interface TransactionFormProps {
   setValue: (value: string) => void;
   isMutating: boolean;
   onSubmit: () => void;
+  file: File | null;
+  setFile: Dispatch<SetStateAction<File | null>>;
 }
 
 export function TransactionForm({
@@ -25,6 +29,8 @@ export function TransactionForm({
   setValue,
   isMutating,
   onSubmit,
+  file,
+  setFile,
 }: TransactionFormProps) {
   const theme = useTheme();
 
@@ -67,6 +73,13 @@ export function TransactionForm({
             },
           }}
         />
+      </Box>
+
+      <Box width="280px" zIndex={1}>
+        <FormLabel sx={{ color: theme.palette.primary.dark }}>
+          Anexo de documentos
+        </FormLabel>
+        <InputFile file={file} setFile={setFile} />
       </Box>
 
       <Box width="250px" zIndex={1} mt="32px">

@@ -10,6 +10,7 @@ import { useUser } from "@/modules/hooks/useUser";
 
 export default function NewTransactionCard() {
   const [value, setValue] = useState<string>("0");
+  const [file, setFile] = useState<File | null>(null);
   const [transactionType, setTransactionType] = useState<TransactionTypes>();
   const { user } = useUser();
 
@@ -20,6 +21,7 @@ export default function NewTransactionCard() {
     if (toastProps.type === "success") {
       setValue("0");
       setTransactionType(undefined);
+      setFile(null);
     }
   }, [toastProps]);
 
@@ -28,6 +30,7 @@ export default function NewTransactionCard() {
       userId: user.id,
       transactionType,
       value,
+      file,
     });
   };
 
@@ -45,6 +48,8 @@ export default function NewTransactionCard() {
         </Box>
 
         <TransactionForm
+          file={file}
+          setFile={setFile}
           transactionType={transactionType}
           setTransactionType={setTransactionType}
           value={value}
